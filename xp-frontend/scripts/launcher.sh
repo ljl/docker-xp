@@ -5,6 +5,7 @@ a2enmod proxy_wstunnel
 
 echo "Generating proxy config to $APP_PORT_8080_TCP"
 WS_URL="$(echo $APP_PORT_8080_TCP | sed 's/^tcp/ws/')/"
+http_URL="$(echo $APP_PORT_8080_TCP | sed 's/^tcp/http/')/"
 PROXYPASS="ProxyPass / $WS_URL"
 PROXYPASSREV="ProxyPassReverse / $WS_URL"
 echo "
@@ -12,8 +13,12 @@ echo "
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/html
 
-	$PROXYPASS
-	$PROXYPASSREV
+	ProxyPass /admin/event ws://$APP_PORT_8080_TCP_ADDR:$APP_PORT_8080_TCP_PORT/admin/event
+	ProxyPassReverse /admin/event ws://$APP_PORT_8080_TCP_ADDR:$APP_PORT_8080_TCP_PORT/admin/event
+
+
+	ProxyPass / http://$APP_PORT_8080_TCP_ADDR:$APP_PORT_8080_TCP_PORT/
+	ProxyPassReverse / http://$APP_PORT_8080_TCP_ADDR:$APP_PORT_8080_TCP_PORT/
 
 
 	ErrorLog /proc/self/fd/2
