@@ -2,6 +2,7 @@
 
 echo "Enabling proxyws module"
 a2enmod proxy_wstunnel
+a2enmod proxy_http
 
 echo "Generating proxy config to $APP_PORT_8080_TCP"
 WS_URL="$(echo $APP_PORT_8080_TCP | sed 's/^tcp/ws/')/"
