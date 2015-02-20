@@ -14,6 +14,9 @@ echo "
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/html
 
+	ProxyRequests Off
+	ProxyPreserveHost On
+
 	ProxyPass /admin/event ws://$APP_PORT_8080_TCP_ADDR:$APP_PORT_8080_TCP_PORT/admin/event
 	ProxyPassReverse /admin/event ws://$APP_PORT_8080_TCP_ADDR:$APP_PORT_8080_TCP_PORT/admin/event
 
