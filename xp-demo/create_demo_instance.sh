@@ -23,23 +23,43 @@ function publish_demosite()
 	echo "curl -u $AUTH -H \"Content-Type: application/json\" -XPOST '$ADMIN_URL/rest/content/publish' -d '$JSON' "
 }
 
+
 echo "### Creating persistant storage container"
-#docker run -it --name xp-home-demo enonic/xp-home
+docker run -it --name xp-home-demo enonic/xp-home
+
+read
 
 echo "### Creating Enonic XP installation"
-#docker run -d --volumes-from xp-home-demo --name xp-app-demo enonic/xp-app
+docker run -d --volumes-from xp-home-demo --name xp-app-demo enonic/xp-app
+
+read
 
 echo "### Starting up frontend"
-#docker run -d --name xp-frontend -p 80:80 --link xp-app-demo:app enonic/xp-frontend
+docker run -d --name xp-frontend -p 80:80 --link xp-app-demo:app enonic/xp-frontend
+
+read
 
 echo "### Injecting demo module"
-#docker exec xp-app-demo wget -O /tmp/demo-1.0.0.jar http://repo.enonic.com/public/com/enonic/xp/modules/demo/1.0.0/demo-1.0.0.jar
-#docker exec xp-app-demo cp /tmp/demo-1.0.0.jar /enonic-xp/home/deploy/demo-1.0.0.jar
+docker exec xp-app-demo wget -O /tmp/demo-1.0.0.jar http://repo.enonic.com/public/com/enonic/xp/modules/demo/1.0.0/demo-1.0.0.jar
+docker exec xp-app-demo cp /tmp/demo-1.0.0.jar /enonic-xp/home/deploy/demo-1.0.0.jar
+
+read
 
 echo "### Publishing demo site"
 publish_demosite http://$HOSTNAME/admin
 
+read
+
 echo "### Setting up vhost properties"
+docker exec xp-app-demo wget -O /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template https://raw.githubusercontent.com/enonic/docker-xp/master/xp-demo/com.enonic.xp.web.vhost.cfg.template
+docker exec xp-app-demo sed -i "s/HOSTNAME/$HOSTNAME/g" /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template
+docker exec xp-app-demo rm /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg
+docker exec xp-app-demo mv /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg
+
+read
+
 
 echo "### Changing su password to $PWD"
 set_password http://$HOSTNAME/admin $PWD
+
+read
