@@ -58,7 +58,7 @@ echo " --- pause ---"
 read
 
 echo "### Publishing demo site"
-publish_demosite http://$HOSTNAME/admin
+publish_demosite http://localhost/admin
 
 echo " --- pause ---"
 read
@@ -74,7 +74,7 @@ read
 
 
 echo "### Changing su password to $PWD"
-set_password http://$HOSTNAME/admin $PWD
+set_password http://localhost/admin $PWD
 
 echo " --- pause ---"
 read
