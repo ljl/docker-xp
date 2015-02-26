@@ -90,4 +90,4 @@ password: $PWD
 For documentation, please see https://enonic.com/docs/latest/
 And if there are any questions, please contact either Morten, Kristian or me ( I've added Morten and Kristian on cc. )
 
-" > /home/user/´¨demo-instance.txt
+" > /home/user/demo-instance.txt
