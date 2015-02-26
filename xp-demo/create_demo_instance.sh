@@ -63,3 +63,23 @@ echo "### Changing su password to $PWD"
 set_password http://$HOSTNAME/admin $PWD
 
 read
+
+echo "### Finished configuring Enonic XP demo environment ###"
+echo "
+
+--- mail this part to customer ---
+Subject: Enonic XP demo instance
+
+Hi.
+I see that you have requested a demo installation of Enonic XP.
+You can access it here:
+
+Public site: http://$HOSTNAME/
+Admin: http://$HOSTNAME/admin 
+Username: su
+password: $PWD
+
+For documentation, please see https://enonic.com/docs/latest/
+And if there are any questions, please contact either Morten, Kristian or me ( I've added Morten and Kristian on cc. )
+
+" > /demo-instance.txt
