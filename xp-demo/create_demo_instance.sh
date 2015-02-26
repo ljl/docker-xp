@@ -2,6 +2,14 @@
 echo "### Enonic XP demo instance configurator ###"
 
 HOSTNAME=$1
+
+if [[ "x$1" = "x" ]]
+	then
+	echo "hostname argument is missing, please add."
+	echo "ex: $0 <hostname>"
+	exit 1
+fi
+
 PWD=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c14)
 
 function set_password()
