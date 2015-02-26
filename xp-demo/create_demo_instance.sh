@@ -35,33 +35,32 @@ function publish_demosite()
 echo "### Creating persistant storage container"
 docker run -it --name xp-home-demo enonic/xp-home
 
-echo " --- pause ---"
-read
+
 
 echo "### Creating Enonic XP installation"
 docker run -d --volumes-from xp-home-demo --name xp-app-demo enonic/xp-app
 
-echo " --- pause ---"
-read
 
 echo "### Starting up frontend"
 docker run -d --name xp-frontend -p 80:80 --link xp-app-demo:app enonic/xp-frontend
 
-echo " --- pause ---"
-read
+
+
+echo "Sleeping for 20 seconds to make shure Enonic XP is up and running"
+sleep 20
 
 echo "### Injecting demo module"
 docker exec xp-app-demo wget -O /tmp/demo-1.0.0.jar http://repo.enonic.com/public/com/enonic/xp/modules/demo/1.0.0/demo-1.0.0.jar
 docker exec xp-app-demo cp /tmp/demo-1.0.0.jar /enonic-xp/home/deploy/demo-1.0.0.jar
 
-echo " --- pause ---"
-read
+
+echo "Sleeping for 20 seconds to get the demo deployment ready"
+sleep 20
 
 echo "### Publishing demo site"
 publish_demosite http://localhost/admin
 
-echo " --- pause ---"
-read
+
 
 echo "### Setting up vhost properties"
 docker exec xp-app-demo wget -O /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template https://raw.githubusercontent.com/enonic/docker-xp/master/xp-demo/com.enonic.xp.web.vhost.cfg.template
@@ -69,15 +68,13 @@ docker exec xp-app-demo sed -i "s/HOSTNAME/$HOSTNAME/g" /enonic-xp/home/config/c
 docker exec xp-app-demo rm /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg
 docker exec xp-app-demo mv /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg
 
-echo " --- pause ---"
-read
+
 
 
 echo "### Changing su password to $PWD"
 set_password http://localhost/admin $PWD
 
-echo " --- pause ---"
-read
+
 
 echo "### Finished configuring Enonic XP demo environment ###"
 echo "
