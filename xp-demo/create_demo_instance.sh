@@ -1,13 +1,12 @@
 #!/bin/bash
 echo "### Enonic XP demo instance configurator ###"
 
-HOSTNAME=$1
+MY_HOSTNAME=$1
 
 if [[ "x$1" = "x" ]]
 	then
-	echo "hostname argument is missing, please add."
-	echo "ex: $0 <hostname>"
-	exit 1
+	echo "hostname argument is missing, using hostname on instance"
+	MY_HOSTNAME="$HOSTNAME.tryme.enonic.io"
 fi
 
 PWD=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c14)
@@ -55,7 +54,7 @@ publish_demosite http://localhost/admin
 
 echo "### Setting up vhost properties"
 docker exec xp-app-demo wget -O /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template https://raw.githubusercontent.com/enonic/docker-xp/master/xp-demo/com.enonic.xp.web.vhost.cfg.template
-docker exec xp-app-demo sed -i "s/HOSTNAME/$HOSTNAME/g" /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template
+docker exec xp-app-demo sed -i "s/HOSTNAME/$MY_HOSTNAME/g" /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template
 docker exec xp-app-demo rm /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg
 docker exec xp-app-demo mv /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg
 
@@ -74,8 +73,8 @@ Hi.
 I see that you have requested a demo installation of Enonic XP.
 You can access it here:
 
-Public site: http://$HOSTNAME/
-Admin: http://$HOSTNAME/admin 
+Public site: http://$MY_HOSTNAME/
+Admin: http://$MY_HOSTNAME/admin 
 Username: su
 password: $PWD
 
