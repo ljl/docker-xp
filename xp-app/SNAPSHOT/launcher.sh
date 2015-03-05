@@ -12,6 +12,7 @@ if [[ ! -d $XP_HOME ]]
 		mv /tmp/enonic-xp-$XP_DISTRO_VERSION/home /tmp/enonic-xp-$XP_DISTRO_VERSION/home.org
 
 		cp -rf /tmp/enonic-xp-$XP_DISTRO_VERSION/* $XP_ROOT/.
+		rm -rf /tmp/distro-$XP_DISTRO_VERSION.tar.gz
 else
 	echo "$XP_HOME exists, skipping download of new snapshot."
 fi
