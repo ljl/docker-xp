@@ -4,7 +4,7 @@ echo "Setting filesystem permissions"
 
 # Extracting Enonic xp
 
-if [[ ! -d $XP_HOME ]]
+if [[ ! -d $XP_ROOT/bin ]]
 	then
 		echo "Downloading Enonic XP distro and extracting it to temp folder."
 		wget -O /tmp/distro-$XP_DISTRO_VERSION.tar.gz http://repo.enonic.com/public/com/enonic/xp/distro/$XP_DISTRO_VERSION/distro-$XP_DISTRO_VERSION.tar.gz
@@ -14,7 +14,7 @@ if [[ ! -d $XP_HOME ]]
 		cp -rf /tmp/enonic-xp-$XP_DISTRO_VERSION/* $XP_ROOT/.
 		rm -rf /tmp/distro-$XP_DISTRO_VERSION.tar.gz
 else
-	echo "$XP_HOME exists, skipping download of new snapshot."
+	echo "Instance exists, continuing..."
 fi
 
 
