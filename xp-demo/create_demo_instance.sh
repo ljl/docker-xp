@@ -30,6 +30,16 @@ function publish_demosite()
 	eval "curl -u $AUTH -H \"Content-Type: application/json\" -XPOST '$ADMIN_URL/rest/content/publish' -d '$JSON' "
 }
 
+echo "### Pulling docker images"
+echo "    - enonic/xp-home"
+docker pull enonic/xp-home
+
+echo "    - enonic/xp-app"
+docker pull enonic/xp-app
+
+echo "    - enonic/xp-frontend"
+docker pull enonic/xp-frontend
+
 echo "### Creating persistant storage container"
 docker run -it --name xp-home-demo enonic/xp-home
 sleep 5
