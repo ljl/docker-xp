@@ -41,9 +41,8 @@ echo "    - enonic/xp-frontend"
 docker pull enonic/xp-frontend
 
 echo "### Creating persistant storage container"
-docker run -it --name xp-home-demo enonic/xp-home
-sleep 5
-
+docker run -d -it --name xp-home-demo enonic/xp-home
+docker wait xp-home-demo
 echo "### Creating Enonic XP installation"
 docker run -d --volumes-from xp-home-demo --name xp-app-demo enonic/xp-app
 sleep 5
