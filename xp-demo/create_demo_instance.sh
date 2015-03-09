@@ -32,10 +32,11 @@ function publish_demosite()
 
 echo "### Creating persistant storage container"
 docker run -it --name xp-home-demo enonic/xp-home
+sleep 5
 
 echo "### Creating Enonic XP installation"
 docker run -d --volumes-from xp-home-demo --name xp-app-demo enonic/xp-app
-
+sleep 5
 echo "### Starting up frontend"
 docker run -d --name xp-frontend -p 80:80 --link xp-app-demo:app enonic/xp-frontend
 
