@@ -6,6 +6,8 @@ echo "Setting filesystem permissions"
 
 if [[ ! -d $XP_ROOT/bin ]]
 	then
+		echo "Removing osgi cache"
+		rm -rf $XP_HOME/work
 		echo "Downloading Enonic XP distro and extracting it to temp folder."
 		wget -O /tmp/distro-$XP_DISTRO_VERSION.tar.gz http://repo.enonic.com/public/com/enonic/xp/distro/$XP_DISTRO_VERSION/distro-$XP_DISTRO_VERSION.tar.gz
 		cd /tmp ; tar zxvf distro-$XP_DISTRO_VERSION.tar.gz
