@@ -89,6 +89,8 @@ Username: su
 password: $PWD
 
 For documentation, please see https://enonic.com/docs/latest/
-And if there are any questions, please contact either Morten, Kristian or me ( I've added Morten and Kristian on cc. )
+And if there are any questions, please contact either Kristian or me ( I've added Kristian on cc. )
+
+We'll keep the installation up for three days for you. If you wan't to keep it longer, just let us know. 
 
 " > /home/user/demo-instance.txt
