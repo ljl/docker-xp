@@ -18,6 +18,5 @@ RUN apt-get update
 RUN apt-get -y install software-properties-common
 RUN add-apt-repository -y ppa:webupd8team/java
 RUN apt-get update
-RUN apt-get -y install oracle-java8-jdk
-RUN ln -s /usr/lib/jvm/java-8-oracle /usr/lib/jvm/default-java
+RUN apt-get -y install oracle-java8-installer oracle-java8-set-default
 RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /etc/environment
