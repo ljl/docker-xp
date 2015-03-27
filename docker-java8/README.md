@@ -8,5 +8,5 @@ docker build -t enonic/java8 .
 
 ## Run
 ```
-docker run -it -rm --name java8 enonic/java bash
+docker run -it -rm --name java8 enonic/java8 bash
 ```
