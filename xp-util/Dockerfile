@@ -7,7 +7,7 @@ MAINTAINER Erik Kaareng-sunde <esu@enonic.com>
 USER root
 
 # Install other software
-RUN apt-get update && apt-get -y install git rsync
+RUN apt-get update && apt-get -y install git rsync unzip
 
 
 
