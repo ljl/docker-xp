@@ -53,8 +53,11 @@ echo "Sleeping for 20 seconds to make shure Enonic XP is up and running"
 sleep 20
 
 echo "### Injecting demo module"
-docker exec xp-app-demo wget -O /tmp/demo-1.0.0.jar http://repo.enonic.com/public/com/enonic/xp/modules/demo/1.0.0/demo-1.0.0.jar
-docker exec xp-app-demo cp /tmp/demo-1.0.0.jar /enonic-xp/home/deploy/demo-1.0.0.jar
+
+DEMO_MODULE_VERSION=1.1.0
+
+docker exec xp-app-demo wget -O /tmp/demo-$DEMO_MODULE_VERSION.jar http://repo.enonic.com/public/com/enonic/xp/modules/demo/$DEMO_MODULE_VERSION/demo-$DEMO_MODULE_VERSION.jar
+docker exec xp-app-demo cp /tmp/demo-$DEMO_MODULE_VERSION.jar /enonic-xp/home/deploy/demo-$DEMO_MODULE_VERSION.jar
 
 echo "Sleeping for 20 seconds to get the demo deployment ready"
 sleep 20
