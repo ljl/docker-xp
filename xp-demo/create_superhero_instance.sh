@@ -56,7 +56,7 @@ echo "### Injecting superhero module"
 
 DEMO_MODULE_VERSION=1.1.0
 
-docker exec xp-app-demo wget -O /tmp/demo-$DEMO_MODULE_VERSION.jar http://repo.enonic.com/public/com/enonic/theme/superhero/1.0.0-SNAPSHOT/superhero-1.0.0-SNAPSHOT.jar
+docker exec xp-app-demo wget -O /tmp/superhero-1.0.0-SNAPSHOT.jar http://repo.enonic.com/public/com/enonic/theme/superhero/1.0.0-SNAPSHOT/superhero-1.0.0-SNAPSHOT.jar
 docker exec xp-app-demo cp /tmp/superhero-1.0.0-SNAPSHOT.jar /enonic-xp/home/deploy/superhero-1.0.0-SNAPSHOT.jar
 
 echo "Sleeping for 20 seconds to get the demo deployment ready"
