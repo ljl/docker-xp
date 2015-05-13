@@ -26,7 +26,7 @@ function publish_demosite()
 	ADMIN_URL=$1
 	
 	AUTH="su:password"
-	JSON="{\"ids\":[\"2dfbdc41-af98-4b3c-a2a9-9dc4814d003a\"]}"
+	JSON="{\"ids\":[\"e1f57280-d672-4cd8-b674-98e26e5b69ae\"]}"
 	eval "curl -u $AUTH -H \"Content-Type: application/json\" -XPOST '$ADMIN_URL/rest/content/publish' -d '$JSON' "
 }
 
