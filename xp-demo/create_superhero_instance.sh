@@ -62,8 +62,8 @@ docker exec xp-app-demo cp /tmp/superhero-$MODULE_VERSION.jar /enonic-xp/home/de
 echo "Sleeping for 20 seconds to get the demo deployment ready"
 sleep 20
 
-#echo "### Publishing demo site"
-#publish_demosite http://localhost/admin
+echo "### Publishing demo site"
+publish_demosite http://localhost/admin
 
 echo "### Setting up vhost properties"
 docker exec xp-app-demo wget -O /enonic-xp/home/config/com.enonic.xp.web.vhost.cfg.template https://raw.githubusercontent.com/enonic/docker-xp/master/xp-demo/com.enonic.xp.web.vhost.cfg.template-superhero
