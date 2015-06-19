@@ -97,3 +97,10 @@ And if there are any questions, please contact either Kristian or me ( I've adde
 We'll keep the installation up for three days for you. If you wan't to keep it longer, just let us know. 
 
 " > /home/user/demo-instance.txt
+
+# Installing mailutils to send mail
+echo "postfix postfix/mailname string $(hostname -f)" | debconf-set-selections
+echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+apt-get install -y mailutils
+
+cat /home/user/demo-instance.txt | mail -s "new Tryme installation ready on $HOSTNAME" tryme-admins@enonic.io
