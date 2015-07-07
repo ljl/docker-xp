@@ -1,10 +1,10 @@
-# Docker container for Enonic XP 5.2.0
+# Docker container for Enonic XP 5.3.0
 
 ## Build local
 ```
 git clone https://github.com/enonic/docker-xp-app.git
-cd docker-xp-app/5.2.0
-docker build --rm -t enonic/xp-app:5.2.0 .
+cd docker-xp-app/5.3.0
+docker build --rm -t enonic/xp-app:5.3.0 .
 ```
 
 ## Start enonic xp container with linked storage container
