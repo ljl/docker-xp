@@ -19,20 +19,20 @@ RUN echo "export XP_UID=$XP_UID" >> /etc/environment
 RUN apt-get -y install wget
 
 # Extracting Enonic xp
-#RUN wget -O /tmp/distro-$XP_DISTRO_VERSION.tar.gz http://repo.enonic.com/public/com/enonic/xp/distro/$XP_DISTRO_VERSION/distro-$XP_DISTRO_VERSION.tar.gz
-#RUN cd /tmp ; tar zxvf distro-$XP_DISTRO_VERSION.tar.gz
-#RUN mv /tmp/enonic-xp-$XP_DISTRO_VERSION/home /tmp/enonic-xp-$XP_DISTRO_VERSION/home.org
+RUN wget -O /tmp/distro-$XP_DISTRO_VERSION.tar.gz http://repo.enonic.com/public/com/enonic/xp/distro/$XP_DISTRO_VERSION/distro-$XP_DISTRO_VERSION.tar.gz
+RUN cd /tmp ; tar zxvf distro-$XP_DISTRO_VERSION.tar.gz
+RUN mv /tmp/enonic-xp-$XP_DISTRO_VERSION/home /tmp/enonic-xp-$XP_DISTRO_VERSION/home.org
 RUN mkdir -p $XP_ROOT
-#RUN cp -rf /tmp/enonic-xp-$XP_DISTRO_VERSION/* $XP_ROOT/.
+RUN cp -rf /tmp/enonic-xp-$XP_DISTRO_VERSION/* $XP_ROOT/.
 
 # Adding Enonic xp user
 RUN adduser --home $XP_ROOT --gecos "" --no-create-home --UID $XP_UID --disabled-password $XP_USER
-#RUN chown -R $XP_USER $XP_ROOT
+RUN chown -R $XP_USER $XP_ROOT
 # Adding launcher script
 ADD launcher.sh /launcher.sh
 RUN chmod +x /launcher.sh
 
-#USER enonic-xp
+USER enonic-xp
 
 # Exposing web port, debug port and telnet port
 EXPOSE 8080 5005 5555
