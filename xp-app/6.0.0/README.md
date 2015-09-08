@@ -1,4 +1,4 @@
-# Docker container for Enonic XP 6.0.0-RC2
+# Docker container for Enonic XP 6.0.0
 
 ## Build local
 
@@ -6,10 +6,10 @@
     cd docker-xp-app/6.0.0
     docker build --rm -t enonic/xp-app:6.0.0 .
 
-## Start enonic xp container standalone
+## Start Enonic XP container standalone
 
     docker run -d -p 8080:8080 --name xp-app enonic/xp-app:6.0.0
 
-## Start enonic xp container with linked storage container
+## Start Enonic XP container with linked storage container
 
     docker run -d -p 8080:8080 --volumes-from xp-home --name xp-app enonic/xp-app:6.0.0
