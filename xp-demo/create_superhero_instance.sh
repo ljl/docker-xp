@@ -58,17 +58,14 @@ echo "### Finished configuring Enonic XP demo environment ###"
 
 echo "
 
---- mail this part to customer ---
-Subject: Enonic XP demo instance
-
-Hi <name>!
+Hi!
 
 Thank you for signing up for an Enonic XP cloud trial.
 
 We have created a private installation in our Developer Cloud for your testing. You can access the installation here:
 
 Public site: http://$MY_HOSTNAME/
-Admin: http://$MY_HOSTNAME/admin 
+Admin: http://$MY_HOSTNAME/admin
 Username: su
 password: $PASSWD
 
@@ -76,7 +73,7 @@ Community forum:
 https://discuss.enonic.com/
 
 Documentation:
-http://xp.readthedocs.org/en/6.0/
+http://xp.readthedocs.org/en/6.1/
 
 Training courses and more:
 https://enonic.com/learn
@@ -85,10 +82,10 @@ Your installation is available for three days. Just, let us know if you need it 
 
 Finally, if you need any help let us know. We can also schedule a GotoMeeting to demo and answer questions.
 
-Vennlig hilsen/Best regards 
+Vennlig hilsen/Best regards
 
-Morten Øien Eriksen 
-CEO & Co-Founder 
+Morten Øien Eriksen
+CEO & Co-Founder
 
 The fastest way from idea to Digital Experience - http://youtu.be/cFfxuWUgcvI
 
