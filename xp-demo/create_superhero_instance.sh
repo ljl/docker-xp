@@ -69,6 +69,9 @@ Admin: http://$MY_HOSTNAME/admin
 Username: su
 password: $PASSWD
 
+Video - How to work with content:
+https://www.youtube.com/watch?v=YBOghlzIHDg
+
 Community forum:
 https://discuss.enonic.com/
 
